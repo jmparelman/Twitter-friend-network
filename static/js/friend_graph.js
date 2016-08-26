@@ -1,5 +1,10 @@
-function execute() {
-
+function execute(type) {
+if (type == 'custom'){
+    data = $('form').serialize();
+}
+else if (type == 'ics'){
+    data = {"user":"Beyonce"}.serialize();
+}
 $.ajax({
     beforeSend: function () {
         $(".loader").show(300);

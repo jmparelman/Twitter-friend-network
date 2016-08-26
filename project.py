@@ -13,8 +13,13 @@ def first():
 @app.route('/get_username',methods=['POST'])
 def get_username():
     authKeys = json.load(open('static/OAUTHs.json', 'r'))
-    director = getDirectConnection(request.form['user'], authKeys)
-    nodes,links = director.makeNetwork()
+    if request.form['user'] == 'cu':
+        dat = json.load(open('static/TwitterData_ics.json','r'))
+        nodes = dat['nodes']
+        links = dat['links']
+    else:
+        director = getDirectConnection(request.form['user'], authKeys)
+        nodes,links = director.makeNetwork()
     return jsonify(nodes=nodes,links=links)
 
 if __name__ == '__main__':
