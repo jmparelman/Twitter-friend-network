@@ -18,6 +18,7 @@ def get_username():
     return jsonify(nodes=nodes,links=links)
 
 if __name__ == '__main__':
+    print 'running from the root'
     os.chdir(os.getcwd())
     app.secret_key = 'super-secret-key'
     app.debug = True
